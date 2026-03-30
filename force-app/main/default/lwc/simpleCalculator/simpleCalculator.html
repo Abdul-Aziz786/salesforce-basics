@@ -1,0 +1,33 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">CS - 2 - Calculator</div>
+
+    <div class="calculator slds-box">
+      <!-- Display -->
+      <div
+        class="display slds-text-align_right slds-text-heading_large slds-p-around_small"
+      >
+        {displayValue}
+      </div>
+
+      <!-- Buttons -->
+      <div class="slds-grid slds-wrap slds-gutters_medium">
+        <template for:each={buttons} for:item="btn">
+          <div
+            key={btn.label}
+            class="slds-col slds-size_1-of-4 slds-m-top_x-small"
+          >
+            <lightning-button
+              variant={btn.variant}
+              label={btn.label}
+              data-type={btn.type}
+              data-value={btn.value}
+              onclick={handleClick}
+            >
+            </lightning-button>
+          </div>
+        </template>
+      </div>
+    </div>
+  </lightning-card>
+</template>

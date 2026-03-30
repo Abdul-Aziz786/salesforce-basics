@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "/Users/abdulajees/Desktop/Learn APEX/SF Projects/SF Dev"
+    }
+  ],
+  "settings": {
+    "eslint.workingDirectories": [
+      "/Users/abdulajees/Desktop/Learn APEX/SF Projects/SF Dev"
+    ],
+    "eslint.validate": [
+      "javascript",
+      "typescript"
+    ],
+    "eslint.options": {
+      "overrideConfigFile": "/Users/abdulajees/Desktop/Learn APEX/SF Projects/SF Dev/.eslintrc.json"
+    }
+  }
+}

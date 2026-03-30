@@ -1,0 +1,21 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">P-C Sample</div>
+    <div slot="actions">
+      <lightning-button
+        lwc:ref="start"
+        variant="brand"
+        label="Start"
+        onclick={onClickStart}
+      ></lightning-button>
+    </div>
+
+    <div>
+      <c-child-progress-bar
+        progress-value={progressValue}
+        max-value={maxValue}
+        onprogresscomplete={onProgressComplete}
+      ></c-child-progress-bar>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,22 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Modal Demo</div>
+    <lightning-layout
+      horizontal-align="center"
+      pull-to-boundary="small"
+      vertical-align="center"
+    >
+      <lightning-layout-item>
+        <lightning-button
+          onclick={handleClick}
+          aria-haspopup="dialog"
+          label="Open My Modal"
+        >
+        </lightning-button>
+      </lightning-layout-item>
+      <lightning-layout-item padding="around-small">
+        <p>Result: {result}</p>
+      </lightning-layout-item>
+    </lightning-layout>
+  </lightning-card>
+</template>

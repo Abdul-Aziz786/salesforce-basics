@@ -1,0 +1,30 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Case Study - 1</div>
+    <div slot="actions">
+      <div class="slds-grid slds-gutters">
+        <template for:each={count} for:item="i">
+          <div class="slds-col" key={i.index}>
+            <lightning-button
+              data-index={i.index}
+              variant="brand"
+              label={i.name}
+              onclick={onClick}
+            ></lightning-button>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div>
+      <lightning-input
+        class={style}
+        value={value}
+        onchange={handleChange}
+        placeholder="Enter text"
+        type="text"
+        variant="label-hidden"
+      ></lightning-input>
+    </div>
+  </lightning-card>
+</template>

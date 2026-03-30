@@ -1,0 +1,12 @@
+<template>
+  <lightning-carousel scroll-duration="5">
+    <template for:each={items} for:item="player">
+      <lightning-carousel-image
+        key={player.name}
+        src={player.imageUrl}
+        header={player.name}
+        description={player.description}
+      ></lightning-carousel-image>
+    </template>
+  </lightning-carousel>
+</template>

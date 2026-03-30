@@ -1,0 +1,56 @@
+<template >
+    <lightning-card  variant="base" >
+
+
+        <lightning-input 
+          type="number"
+          label="Enter Value"
+          onchange={handleStockChange}        ></lightning-input>
+
+          <template if:false={isProductVisible}>
+            <p>Product is available</p>
+          </template>
+        <template if:true={isProductVisible}>
+                <p>{product.name}</p>
+                <p>{product.price}</p>
+                <p>{product.stock}</p>
+            </template>
+
+
+      <lightning-menu-divider></lightning-menu-divider>  
+      
+     <lightning-input 
+       type="number"
+       label="Enter Number"
+       value={input1}
+       onchange={handleInput1Change}
+     ></lightning-input>
+     <lightning-input 
+       type="number"
+       label="Enter Number"
+       value={input2}
+       onchange={handleInput2Change}
+     ></lightning-input>
+     <div class="space"></div>
+     <lightning-button-group>
+       <lightning-button label="Add" onclick={add}></lightning-button>
+       <lightning-button label="Subtract" onclick={subtract}></lightning-button>
+       <lightning-button label="Multiply" onclick={multiply}></lightning-button>
+       <lightning-button label="Divide" onclick={divide}></lightning-button>
+       <lightning-button label="Clear" onclick={clear}></lightning-button>
+     </lightning-button-group>
+     <div class="space"></div>
+        <p>Result: {result}</p>
+      <div class={color}>
+        <p>{message}</p>
+        <lightning-button 
+          variant="brand"
+          label="Change Color" 
+          onclick={changeColor} 
+        ></lightning-button>
+     </div>
+
+     <c-employee></c-employee>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,28 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Parent To Child</div>
+    <div slot="actions">
+      <lightning-button
+        label="Reset"
+        onclick={resetSlider}
+        variant="neutral"
+      ></lightning-button>
+    </div>
+
+    <div>
+      <lightning-input
+        type="number"
+        label="Enter Range Value"
+        onchange={handleChange}
+        value={rangeValue}
+        max={maxValue}
+      ></lightning-input>
+      <c-slider-child
+        onvaluechange={listChildChange}
+        value={rangeValue}
+        max-value={maxValue}
+        lwc:ref="sliderChild"
+      ></c-slider-child>
+    </div>
+  </lightning-card>
+</template>

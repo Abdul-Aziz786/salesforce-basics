@@ -1,0 +1,17 @@
+<template>
+  <lightning-card icon-name="standard:contact" variant="base">
+    <div slot="title">CS - 3 - Contacts</div>
+    <div class="slds-p-right_x-small">
+      <template if:true={hasContacts}>
+        <lightning-datatable
+          key-field="Id"
+          data={contacts}
+          columns={columns}
+        ></lightning-datatable>
+      </template>
+      <template if:false={hasContacts}>
+        <p>No contacts found.</p>
+      </template>
+    </div>
+  </lightning-card>
+</template>

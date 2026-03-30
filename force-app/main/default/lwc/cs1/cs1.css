@@ -1,0 +1,17 @@
+.style1 {
+  --slds-c-input-text-color: #e53935;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.style2 {
+  --slds-c-input-text-color: #fbc02d;
+  font-size: 25px;
+  font-weight: 300;
+}
+
+.style3 {
+  --slds-c-input-text-color: #1e88e5;
+  font-size: 18px;
+  font-weight: 500;
+}

@@ -1,0 +1,10 @@
+.calculator {
+  max-width: 300px;
+  margin: auto;
+}
+
+.display {
+  background: #f3f3f3;
+  border-radius: 4px;
+  min-height: 60px;
+}

@@ -1,0 +1,17 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Contact</div>
+    <div>
+      <lightning-input type="text" label="First Name"></lightning-input>
+      <lightning-input type="text" label="Last Name"></lightning-input>
+      <lightning-combobox
+        name="city"
+        label="City"
+        value={value}
+        placeholder="Select City"
+        options={city}
+        onchange={onSelectCity}
+      ></lightning-combobox>
+    </div>
+  </lightning-card>
+</template>

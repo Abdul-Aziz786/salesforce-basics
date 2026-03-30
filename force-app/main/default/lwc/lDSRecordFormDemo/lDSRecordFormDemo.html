@@ -1,0 +1,43 @@
+<template>
+  <lightning-card icon-name="standard:account" variant="base">
+    <div slot="title">Record Form Demo</div>
+    <div>
+      <p class="slds-text-heading_small slds-m-left_xx-small">Read</p>
+      <lightning-record-form
+        record-id="001dL000020mWJFQA2"
+        object-api-name={objectApiName}
+        fields={fieldList}
+        mode="readonly"
+        columns="2"
+        onsuccess={onSuccess}
+      >
+      </lightning-record-form>
+    </div>
+    <div>
+      <p class="slds-text-heading_small slds-m-left_xx-small">View And Edit</p>
+      <lightning-record-form
+        record-id="001dL000020mWJFQA2"
+        object-api-name={objectApiName}
+        fields={fieldList}
+        mode="view"
+        columns="2"
+        onsuccess={onSuccess}
+      >
+      </lightning-record-form>
+      <p
+        class="slds-text-heading_small slds-m-left_xx-small slds-text-title_bold slds-text-color_error"
+      >
+        Create
+      </p>
+      <lightning-record-form
+        object-api-name={objectApiName}
+        fields={fieldList}
+        mode="edit"
+        columns="2"
+        data-state="Created"
+        onsuccess={onSuccess}
+      >
+      </lightning-record-form>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <lightning-card  variant="base">
+      <div slot="title">Employee Details</div>
+      <lightning-input 
+        type="number"
+        label="Salary Amount"
+        value={salaryInput}
+        onchange={handleSalaryChange}
+      ></lightning-input>
+
+      <template for:each={filteredEmployees} for:item="employee">
+        <p key={employee.id}>{employee.name} - {employee.salary}</p>
+
+      </template>
+      
+    </lightning-card>
+</template>
+
