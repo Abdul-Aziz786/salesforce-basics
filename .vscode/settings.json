@@ -41,5 +41,6 @@
   ],
   "eslint.options": {
     "overrideConfigFile": "/Users/abdulajees/Desktop/Learn APEX/SF Projects/SF Dev/.eslintrc.json"
-  }
+  },
+  "xml.preferences.showSchemaDocumentationType": "none"
 }
