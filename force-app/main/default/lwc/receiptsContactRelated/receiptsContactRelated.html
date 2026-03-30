@@ -1,0 +1,25 @@
+<template>
+  <lightning-card title="Receipts">
+    <!-- Loader -->
+    <template if:true={isLoading}>
+      <lightning-spinner></lightning-spinner>
+    </template>
+
+    <!-- Table -->
+    <template if:true={receipts}>
+      <lightning-datatable
+        key-field="Id"
+        data={receipts}
+        columns={columns}
+        draft-values={draftValues}
+        onsave={handleSave}
+      >
+      </lightning-datatable>
+    </template>
+
+    <!-- Empty -->
+    <template if:false={receipts.length}>
+      <p class="slds-p-around_medium">No receipts found</p>
+    </template>
+  </lightning-card>
+</template>

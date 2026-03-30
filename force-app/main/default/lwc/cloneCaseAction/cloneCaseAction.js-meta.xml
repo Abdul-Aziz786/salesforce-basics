@@ -10,6 +10,9 @@
     <targetConfig targets="lightning__RecordAction">
         
         <actionType>Action</actionType>
+        <objects>
+            <object>Case</object>
+        </objects>
     </targetConfig>
 </targetConfigs>
 </LightningComponentBundle>
