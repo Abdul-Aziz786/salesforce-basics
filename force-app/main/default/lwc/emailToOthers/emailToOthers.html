@@ -1,0 +1,27 @@
+<template>
+  <lightning-card title="Email to Others">
+    <template if:true={isLoading}>
+      <lightning-spinner></lightning-spinner>
+    </template>
+
+    <lightning-combobox
+      label="From"
+      value={selectedFrom}
+      options={fromOptions}
+      onchange={handleFromChange}
+    >
+    </lightning-combobox>
+
+    <lightning-input label="Email" value={toEmail} onchange={handleToEmail}>
+    </lightning-input>
+
+    <lightning-input label="Subject" value={subject} onchange={handleSubject}>
+    </lightning-input>
+
+    <lightning-input-rich-text value={body} onchange={handleBody}>
+    </lightning-input-rich-text>
+
+    <lightning-button label="Send" variant="brand" onclick={handleSend}>
+    </lightning-button>
+  </lightning-card>
+</template>
