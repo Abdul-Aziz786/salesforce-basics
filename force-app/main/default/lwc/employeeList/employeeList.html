@@ -1,0 +1,67 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Employee List</div>
+    <div slot="actions">
+      <lightning-button
+        variant="brand"
+        label="Fetch"
+        onclick={fetchData}
+      ></lightning-button>
+    </div>
+
+    <div>
+      <template if:true={loader}>
+        <lightning-spinner></lightning-spinner>
+      </template>
+      <div class="slds-grid slds-wrap">
+        <template for:each={data} for:item="item">
+          <div
+            key={item.Email}
+            class="slds-grid-col slds-size_1-of-2 slds-p-around_small"
+          >
+            <div class="slds-grid slds-align_absolute-center">
+              <div class="slds-col slds-size_auto">
+                <img
+                  src={item.Photo}
+                  alt="Photo"
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    object-fit: cover;
+                    border-radius: 8px;
+                  "
+                />
+              </div>
+              <div class="slds-col slds-p-around_small">
+                <p>{item.Name}</p>
+                <p>{item.Email}</p>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <template if:true={hasData}>
+        <lightning-layout class="slds-m-around_medium">
+          <lightning-layout-item class="slds-m-right_medium">
+            <img
+              src={currentItem.Photo}
+              alt="Photo"
+              class="slds-avatar slds-avatar_circle"
+            />
+          </lightning-layout-item>
+          <lightning-layout-item>
+            <p>{currentItem.Name}</p>
+            <p>{currentItem.Email}</p>
+          </lightning-layout-item>
+        </lightning-layout>
+        <div class="slds-m-top_medium">
+          <lightning-button label="Previous" onclick={previous}>
+          </lightning-button>
+
+          <lightning-button label="Next" onclick={next}> </lightning-button>
+        </div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

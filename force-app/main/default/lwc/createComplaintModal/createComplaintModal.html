@@ -1,0 +1,69 @@
+<template>
+  <lightning-modal-header label="New Complaint"></lightning-modal-header>
+
+  <lightning-modal-body>
+    <lightning-combobox
+      label="Complaint Type"
+      value={complaintType}
+      options={typeOptions}
+      onchange={handleType}
+      required
+    >
+    </lightning-combobox>
+    <lightning-textarea
+      label="Comments"
+      value={comments}
+      onchange={handleComments}
+      required
+    >
+    </lightning-textarea>
+    <lightning-textarea
+      label="Resolution"
+      value={resolution}
+      onchange={handleResolution}
+    >
+    </lightning-textarea>
+  </lightning-modal-body>
+
+  <lightning-modal-footer>
+    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+
+    <lightning-button
+      class="slds-p-left_small"
+      label="Save"
+      variant="brand"
+      disabled={isLoading}
+      onclick={handleSave}
+    >
+    </lightning-button>
+  </lightning-modal-footer>
+</template>
+
+<!-- <template>
+  <lightning-modal-header label="New Complaint"></lightning-modal-header>
+  <lightning-modal-body>
+    <lightning-record-edit-form
+      object-api-name={objectApiName}
+      onsuccess={handleSuccess}
+    >
+      <lightning-input-field field-name="Comments__c"></lightning-input-field>
+      <lightning-input-field
+        field-name="Complaint_Type__c"
+      ></lightning-input-field>
+      <lightning-input-field
+        field-name="Account__c"
+        value={accountId}
+      ></lightning-input-field>
+      <lightning-input-field field-name="Resolution__c"></lightning-input-field>
+    </lightning-record-edit-form>
+  </lightning-modal-body>
+  <lightning-modal-footer>
+    <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+    <lightning-button
+      label="Save"
+      class="slds-p-left_small"
+      onclick={handleSave}
+      variant="brand"
+    ></lightning-button>
+  </lightning-modal-footer>
+</template> -->

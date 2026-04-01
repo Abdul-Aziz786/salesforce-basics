@@ -1,0 +1,19 @@
+<template>
+  <lightning-card variant="base">
+    <div slot="title">Complaints</div>
+    <div slot="actions">
+      <c-create-complaint
+        record-id={recordId}
+        object-api-name={objectApiName}
+        oncomplaintcreated={handleComplaintCreated}
+      ></c-create-complaint>
+    </div>
+    <div>
+      <lightning-datatable
+        key-field="Id"
+        data={complaints}
+        columns={columns}
+      ></lightning-datatable>
+    </div>
+  </lightning-card>
+</template>

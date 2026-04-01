@@ -1,5 +1,5 @@
 public with sharing class AccountController {
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<Account> searchAccounts(
         String searchKey,
     Integer limitSize,
