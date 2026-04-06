@@ -1,4 +1,4 @@
-<apex:page controller="BloodDonorController"  >
+<apex:page controller="BloodDonorController" showHeader="false" sidebar="false" >
 
     <apex:form id="formId">
 
@@ -130,7 +130,7 @@
             <div class="field-row">
                 <div class="label">* Date Of Birth</div>
                 <div class="input-box">
-                    <apex:inputField value="{!bloodDonor.DOB__c}" required="true" html-type="text"/>
+                    <apex:inputField value="{!bloodDonor.DOB__c}" required="true" />
                 </div>
             </div>
 

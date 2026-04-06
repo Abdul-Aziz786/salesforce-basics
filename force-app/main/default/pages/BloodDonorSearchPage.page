@@ -1,0 +1,126 @@
+<apex:page controller="BloodDonorSearchController" showHeader="false" sidebar="false">
+
+    <apex:pageMessages />
+    <apex:form id="formId">
+
+        <style>
+            .container {
+                width: 600px;
+                margin: 20px auto;
+                border: 2px solid #7a3db8;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .field-row {
+                display: flex;
+                margin-bottom: 10px;
+                align-items: center;
+            }
+
+            .label {
+                width: 150px;
+                font-weight: bold;
+                color: #5e2ca5;
+                text-align: right;
+                padding-right: 10px;
+            }
+
+            .input-box {
+                flex: 1;
+            }
+
+            select {
+                width: 200px;
+                height: 28px;
+            }
+
+            .btn {
+                margin-top: 10px;
+                text-align: center;
+            }
+        </style>
+
+        <div class="container">
+            
+           
+
+            <h2 style="text-align:center;">🔍 Search Blood Donors</h2>
+
+            <!-- Filters -->
+
+            <div class="field-row">
+                <div class="label">Blood Group</div>
+                <div class="input-box">
+                <apex:inputField value="{!bloodDonor.Blood_Group__c}"  required="true" />
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">State</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.State__c}" >
+                        <apex:actionSupport event="onchange" reRender="districtPanel" />
+                    </apex:inputField>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">District</div>
+                <div class="input-box">
+                    <apex:outputPanel id="districtPanel">
+                        <apex:inputField value="{!bloodDonor.District__c}" />
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+            <div class="btn">
+                <apex:commandButton value="Search"
+                                    action="{!searchDonors}"
+                                    reRender="resultPanel"/>
+            </div>
+
+            <!-- Results -->
+
+            <apex:outputPanel id="resultPanel">
+
+                <apex:pageBlock title="Results">
+
+                    <apex:pageBlockTable value="{!donors}" var="d">
+
+                        <apex:column value="{!d.Name__c}" headerValue="Name"/>
+                        <apex:column value="{!d.Blood_Group__c}" headerValue="Blood Group"/>
+
+                        <!-- 🔥 Masked Phone -->
+                        <apex:column headerValue="Phone">
+                            <apex:outputText value="{!LEFT(d.Phone__c,2)}******"/>
+                        </apex:column>
+
+                        <apex:column value="{!d.State__c}" headerValue="State"/>
+                        <apex:column value="{!d.District__c}" headerValue="District"/>
+
+                    </apex:pageBlockTable>
+
+                    <apex:outputText value="No records found"
+                                     rendered="{!donors.size == 0}"/>
+
+                    <!-- Pagination -->
+                    <div style="text-align:center; margin-top:10px;">
+                        <apex:commandButton value="Previous"
+                                            action="{!previous}"
+                                            reRender="resultPanel"/>
+
+                        <apex:commandButton value="Next"
+                                            action="{!next}"
+                                            reRender="resultPanel"/>
+                    </div>
+
+                </apex:pageBlock>
+
+            </apex:outputPanel>
+
+        </div>
+
+    </apex:form>
+
+</apex:page>
