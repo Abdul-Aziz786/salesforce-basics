@@ -1,0 +1,205 @@
+<apex:page controller="BloodDonorController"  >
+
+    <apex:form id="formId">
+
+       
+
+        <style>
+            body {
+                background-color: #ffffff;
+                font-family: Arial, sans-serif;
+            }
+
+            .container {
+                width: 520px;
+                margin: 30px auto;
+                border: 2px solid #7a3db8;
+                border-radius: 8px;
+                padding: 20px 25px;
+                background-color: #fdfdfd;
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .title {
+                font-size: 26px;
+                font-weight: bold;
+                color: #5e2ca5;
+                text-align: center;
+                flex: 1;
+            }
+
+            .logo {
+                width: 50px;
+            }
+
+            .heart {
+                text-align: center;
+                margin: 10px 0;
+            }
+
+            .form-title {
+                text-align: center;
+                font-size: 20px;
+                color: #5e2ca5;
+                font-weight: bold;
+                margin: 5px 0;
+            }
+
+            .desc {
+                text-align: center;
+                font-size: 12px;
+                margin-bottom: 15px;
+                color: #333;
+            }
+
+                        
+            .field-row {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+
+            .label {
+                width: 160px;
+                font-size: 13px;
+                color: #5e2ca5;
+                font-weight: bold;
+                text-align: right;
+                padding-right: 10px;
+            }
+
+            .input-box {
+                flex: 1;
+            }
+
+            .input-box input,
+            .input-box select {
+                width: 200px;
+                height: 26px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                padding-left: 5px;
+            }
+            .btns {
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            .btn {
+                padding: 5px 15px;
+                margin: 5px;
+                border: 1px solid #aaa;
+                background-color: #f2f2f2;
+                cursor: pointer;
+            }
+        </style>
+
+        <div class="container">
+
+            <div class="header">
+                <div></div>
+                <div class="title">Direction For Volunteers</div>
+                <img class="logo"
+                     src="https://as1.ftcdn.net/v2/jpg/00/72/35/88/1000_F_72358897_lKCLNxSg78efE35tlu9ZzGRFd043NNcz.jpg"/>
+            </div>
+
+            <div class="heart">
+                <img src="https://previews.123rf.com/images/mocho1/mocho11407/mocho1140700002/30154217-give-blood-save-life.jpg" width="200"/>
+            </div>
+
+            <div class="form-title">Blood Donor Form</div>
+
+            <div class="desc">
+                Willing to save someone on emergency?? Enroll yourself as a Blood donor.
+                You can register your friends and family members too 🙂
+            </div>
+
+          
+            <div class="field-row">
+                <div class="label">* Name</div>
+                <div class="input-box">
+                    <apex:inputText value="{!bloodDonor.Name__c}"  required="true"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Date Of Birth</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.DOB__c}" required="true" html-type="text"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Blood Group</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.Blood_Group__c}" required="true"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Weight</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.Weight__c}" required="true"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Email Id</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.Email__c}" required="true"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Mobile Number</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.Phone__c}" required="true"/>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* State</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.State__c}" required="true">
+                        <apex:actionSupport event="onchange" reRender="districtBlock"/>
+                    </apex:inputField>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* District</div>
+                <div class="input-box">
+                    <apex:outputPanel id="districtBlock">
+                        <apex:inputField value="{!bloodDonor.District__c}" required="true"/>
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="label">* Last Donated Date</div>
+                <div class="input-box">
+                    <apex:inputField value="{!bloodDonor.Last_Donated_Date__c}" required="true"/>
+                </div>
+            </div>
+            <apex:pageMessages />
+            <div class="btns">
+                <apex:commandButton value="Submit"
+                                    action="{!saveBloodDonor}"
+                                    reRender="formId"
+                                    styleClass="btn"/>
+
+                <apex:commandButton value="Close"
+                                    onclick="window.close(); return false;"
+                                    styleClass="btn"/>
+            </div>
+
+        </div>
+
+    </apex:form>
+
+</apex:page>

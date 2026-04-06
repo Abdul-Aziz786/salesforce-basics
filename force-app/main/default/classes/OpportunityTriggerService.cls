@@ -3,7 +3,9 @@ public  class OpportunityTriggerService implements ITrigger {
     }
     
     public void afterInsert(List<SObject> newList,Map<Id,SObject> newMap) {
-        UpdateAccountTotalOppValue(newList, null);
+        
+        
+        
     }
     
     public void beforeUpdate(List<SObject> newList,
@@ -16,15 +18,22 @@ public  class OpportunityTriggerService implements ITrigger {
     Map<Id,SObject> newMap,
     List<SObject> oldList,
     Map<Id,SObject> oldMap) {
-        UpdateAccountTotalOppValue(newList, oldList);
+        Opportunity opp = (Opportunity) newList[0];
+        Opportunity oldOpp = (Opportunity) oldMap.get(opp.Id);
+        
+        if(opp.StageName == 'Closed Won' && opp.StageName != oldOpp.StageName) {
+            String amount = String.valueOf((Integer)opp.Amount) + '00';
+            String oppName = opp.Name;
+            String oppId = opp.Id;
+            StripeController.updatePaymentLinkInOpportunity(amount, oppName, oppId);
+        }
+        
     }
     public void beforeDelete(List<SObject> oldList,Map<Id,SObject> oldMap) {}
     
     public void afterDelete(List<SObject> oldList,Map<Id,SObject> oldMap) {
-        UpdateAccountTotalOppValue(null, oldList);
     }
     public void afterUnDelete(List<SObject> newList,Map<Id,SObject> newMap) {
-        UpdateAccountTotalOppValue(newList, null);
     }
     
     void UpdateAccountTotalOppValue(List<Opportunity> newList,
