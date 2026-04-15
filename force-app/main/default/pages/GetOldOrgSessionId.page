@@ -1,0 +1,12 @@
+<apex:page controller="SessionController">
+
+    <apex:form>
+        <apex:commandButton value="Get Session ID" action="{!fetchSessionId}" rerender="output" />
+
+        <apex:outputPanel id="output">
+            <h3>Session ID:</h3>
+            <apex:outputText value="{!sessionId}" />
+        </apex:outputPanel>
+    </apex:form>
+
+</apex:page>

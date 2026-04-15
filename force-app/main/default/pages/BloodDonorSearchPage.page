@@ -43,11 +43,8 @@
 
         <div class="container">
             
-           
+            <h2 style="text-align:center;">Search Blood Donors</h2>
 
-            <h2 style="text-align:center;">🔍 Search Blood Donors</h2>
-
-            <!-- Filters -->
 
             <div class="field-row">
                 <div class="label">Blood Group</div>
@@ -80,7 +77,6 @@
                                     reRender="resultPanel"/>
             </div>
 
-            <!-- Results -->
 
             <apex:outputPanel id="resultPanel">
 
@@ -91,10 +87,7 @@
                         <apex:column value="{!d.Name__c}" headerValue="Name"/>
                         <apex:column value="{!d.Blood_Group__c}" headerValue="Blood Group"/>
 
-                        <!-- 🔥 Masked Phone -->
-                        <apex:column headerValue="Phone">
-                            <apex:outputText value="{!LEFT(d.Phone__c,2)}******"/>
-                        </apex:column>
+                        <apex:column value="{!d.Phone__c}" headerValue="Phone"/>
 
                         <apex:column value="{!d.State__c}" headerValue="State"/>
                         <apex:column value="{!d.District__c}" headerValue="District"/>
@@ -104,7 +97,6 @@
                     <apex:outputText value="No records found"
                                      rendered="{!donors.size == 0}"/>
 
-                    <!-- Pagination -->
                     <div style="text-align:center; margin-top:10px;">
                         <apex:commandButton value="Previous"
                                             action="{!previous}"
