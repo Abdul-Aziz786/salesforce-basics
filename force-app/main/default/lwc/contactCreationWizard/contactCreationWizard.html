@@ -1,0 +1,257 @@
+<template>
+  <lightning-card icon-name="standard:contact" variant="base">
+    <div slot="title">Contact Wizard</div>
+
+    <div>
+      <div class="slds-m-around_small">
+        <lightning-progress-indicator
+          current-step={step}
+          type="path"
+          variant="base"
+        >
+          <lightning-progress-step
+            label="Contact Basic Information"
+            value="1"
+          ></lightning-progress-step>
+          <lightning-progress-step
+            label="Contact Details"
+            value="2"
+          ></lightning-progress-step>
+          <lightning-progress-step
+            label="Review & Submit"
+            value="3"
+          ></lightning-progress-step>
+        </lightning-progress-indicator>
+      </div>
+
+      <lightning-record-edit-form
+        object-api-name={objectApiName}
+        onsubmit={handleSubmit}
+        onsuccess={handleSuccess}
+        onerror={handleError}
+      >
+        <template lwc:if={isStep1}>
+          <lightning-layout multiple-rows>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="12"
+              large-device-size="12"
+              small-device-size="12"
+            >
+              <lightning-input-field
+                field-name={fields.firstName}
+                variant="standard"
+                value={fieldData.FirstName}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+              flexibility="auto"
+            >
+              <lightning-input-field
+                field-name={fields.lastName}
+                variant="standard"
+                value={fieldData.LastName}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+            >
+              <lightning-input-field
+                field-name={fields.title}
+                variant="standard"
+                value={fieldData.Title}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+          </lightning-layout>
+        </template>
+        <template lwc:if={isStep2}>
+          <lightning-layout multiple-rows>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="12"
+              large-device-size="12"
+              small-device-size="12"
+            >
+              <lightning-input-field
+                field-name={fields.email}
+                variant="standard"
+                value={fieldData.Email}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+              flexibility="auto"
+            >
+              <lightning-input-field
+                field-name={fields.phone}
+                variant="standard"
+                value={fieldData.Phone}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+            >
+              <lightning-input-field
+                field-name={fields.accountId}
+                variant="standard"
+                value={fieldData.AccountId}
+                onchange={handleChange}
+              ></lightning-input-field>
+            </lightning-layout-item>
+          </lightning-layout>
+        </template>
+        <template lwc:if={isStep3}>
+          <lightning-layout multiple-rows>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="12"
+              large-device-size="12"
+              small-device-size="12"
+            >
+              <lightning-input-field
+                field-name={fields.firstName}
+                variant="standard"
+                value={fieldData.FirstName}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="12"
+              large-device-size="12"
+              small-device-size="12"
+            >
+              <lightning-input-field
+                field-name={fields.lastName}
+                variant="standard"
+                value={fieldData.LastName}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+              flexibility="auto"
+            >
+              <lightning-input-field
+                field-name={fields.phone}
+                variant="standard"
+                value={fieldData.Phone}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+            >
+              <lightning-input-field
+                field-name={fields.accountId}
+                variant="standard"
+                value={fieldData.AccountId}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+            >
+              <lightning-input-field
+                field-name={fields.email}
+                variant="standard"
+                value={fieldData.Email}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+            <lightning-layout-item
+              padding="horizontal-small"
+              size="12"
+              medium-device-size="6"
+              large-device-size="6"
+              small-device-size="6"
+            >
+              <lightning-input-field
+                field-name={fields.title}
+                variant="standard"
+                value={fieldData.Title}
+                disabled
+              ></lightning-input-field>
+            </lightning-layout-item>
+          </lightning-layout>
+
+          <div class="slds-text-align_center slds-m-top_small">
+            <lightning-button
+              variant="brand"
+              type="submit"
+              label="Submit"
+              onclick={handleClick}
+            ></lightning-button>
+          </div>
+        </template>
+      </lightning-record-edit-form>
+
+      <div class="c-container">
+        <lightning-layout horizontal-align="spread">
+          <lightning-layout-item padding="around-small">
+          </lightning-layout-item>
+          <lightning-layout-item padding="around-small">
+            <lightning-button
+              variant="brand"
+              label="Back"
+              onclick={prev}
+              class="slds-p-right_xx-small"
+              disabled={isPrevDisable}
+            ></lightning-button>
+            <lightning-button
+              variant="brand"
+              label="Next"
+              onclick={next}
+              disabled={isNextDisable}
+            ></lightning-button>
+          </lightning-layout-item>
+        </lightning-layout>
+      </div>
+    </div>
+  </lightning-card>
+  <template lwc:if={isLoading}>
+    <lightning-spinner
+      alternative-text="Loading"
+      size="large"
+      variant="base"
+    ></lightning-spinner>
+  </template>
+</template>
