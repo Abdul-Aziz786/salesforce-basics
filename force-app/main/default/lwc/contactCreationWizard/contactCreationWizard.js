@@ -70,12 +70,30 @@ export default class ContactCreationWizard extends LightningElement {
     this.currentStep--;
   }
   next() {
+    if (!this.validateCurrentStep()) {
+      return;
+    }
     if (this.currentStep === 3) {
       return;
     }
     this.currentStep++;
   }
 
+  validateCurrentStep() {
+    const fields = this.template.querySelectorAll("lightning-input-field");
+
+    let isValid = true;
+
+    fields.forEach((field) => {
+      const valid = field.reportValidity();
+
+      if (!valid) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  }
   handleSubmit() {
     this.isLoading = true;
   }
