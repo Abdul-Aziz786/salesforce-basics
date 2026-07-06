@@ -33,4 +33,20 @@ public  class ContactController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> getSampleContacts() {
+        try {
+            return [
+                SELECT Id, FirstName,Name, LastName, Email, Phone, AccountId, Account.Name
+                FROM Contact
+                ORDER BY LastName
+                LIMIT 10
+            ];
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+    
+    
 }
