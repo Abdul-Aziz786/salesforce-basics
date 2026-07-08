@@ -1,0 +1,17 @@
+<template>
+  <lightning-card title="State Manager Demo" icon-name="custom:custom63">
+    <div class="slds-m-around_medium">
+      <lightning-button
+        label="Increment"
+        onclick={handleIncrement}
+      ></lightning-button>
+      <lightning-button
+        label="Decrement"
+        onclick={handleDecrement}
+      ></lightning-button>
+      <lightning-button label="Reset" onclick={handleReset}></lightning-button>
+      <p>Current Count: {count}</p>
+    </div>
+  </lightning-card>
+  <c-state-manager-child-demo></c-state-manager-child-demo>
+</template>
